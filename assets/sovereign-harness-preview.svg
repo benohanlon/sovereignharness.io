@@ -3,19 +3,19 @@
 <desc id="desc">A mint and teal eye. In its pupil: There’s something in you that the world needs. sovereignharness.io.</desc>
 <style>
 @font-face{font-family:Plex;src:url('IBMPlexMono-Regular.ttf') format('truetype');font-weight:400}
-@font-face{font-family:Barlow;src:url('BarlowCondensed-Bold.ttf') format('truetype');font-weight:700}
+@font-face{font-family:Inter;src:url('Inter-Bold.woff2') format('woff2');font-weight:700}
 text{fill:#B8F4DC;text-rendering:geometricPrecision}
 .label{font-family:Plex,monospace;font-weight:400}
-.message{font-family:Barlow,sans-serif;font-weight:700;text-anchor:middle}
+.message{font-family:Inter,sans-serif;font-weight:700;text-anchor:middle}
 </style>
 <rect width="1200" height="630" fill="#031C1D"/>
 <image href="eye.jpg" width="1200" height="630" preserveAspectRatio="xMidYMid slice"/>
 <rect x="38" y="35" width="5" height="26" fill="#F17435"/>
 <text class="label" x="58" y="57" font-size="25" letter-spacing="2.5">SOVEREIGN HARNESS</text>
-<text class="message" x="500" y="231" font-size="38">THERE’S</text>
-<text class="message" x="500" y="270" font-size="38">SOMETHING</text>
-<text class="message" x="500" y="309" font-size="38">IN YOU THAT</text>
-<text class="message" x="500" y="348" font-size="38">THE WORLD</text>
-<text class="message" x="500" y="387" font-size="38">NEEDS.</text>
+<text class="message" x="500" y="255" font-size="24">THERE’S</text>
+<text class="message" x="500" y="283" font-size="24">SOMETHING</text>
+<text class="message" x="500" y="311" font-size="24">IN YOU</text>
+<text class="message" x="500" y="339" font-size="24">THAT THE WORLD</text>
+<text class="message" x="500" y="367" font-size="24">NEEDS</text>
 <text class="label" x="1158" y="596" font-size="21" text-anchor="end">sovereignharness.io</text>
 </svg>
