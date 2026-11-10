@@ -7,3 +7,5 @@ The primary button opens the reader’s native email preferences, where they exp
 Edit index.html and style.css, review desktop/mobile layouts and links, then commit to main to deploy. CNAME binds sovereignharness.io; keep it when updating the page. GitHub Pages handles HTTPS.
 
 The local fonts are unmodified OFL fonts; their licences are bundled in assets. The eye artwork is an AI-generated project asset. Its inclusion here does not publish the private harness or confer official Nous Research / Hermes branding.
+
+Open Graph and large-image social-card metadata point to assets/sovereign-harness-preview.jpg, a simplified 1200 × 630 banner using the brand-kit eye and local fonts. Its editable source is assets/sovereign-harness-preview.svg. This gives services that support link previews a public image for the website URL; individual services may cache their previews. The responsive page hero remains accessible HTML text over the clean eye artwork.
