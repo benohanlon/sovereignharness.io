@@ -197,6 +197,13 @@ h1 { font-size: clamp(49px, 6.2vw, 94px); }
   background: #092729;
 }
 
+.signup-reminder {
+  border-inline-start: 2px solid var(--orange);
+  padding-inline-start: 12px;
+}
+
+.signup-reminder strong { color: var(--orange); }
+
 .button {
   display: inline-block;
   padding: 17px 22px;
