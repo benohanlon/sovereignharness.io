@@ -14,12 +14,13 @@
 :root {
   color-scheme: dark;
   --dark: #031c1d;
+  --text: #e2ecec;
   --mint: #b8f4dc;
   --muted: #5f8d85;
   --orange: #f17435;
   font-family: Plex, ui-monospace, monospace;
   background: var(--dark);
-  color: var(--mint);
+  color: var(--text);
 }
 
 * { box-sizing: border-box; }
@@ -116,6 +117,7 @@ main, footer {
 
 h1, h2 {
   margin: 0;
+  color: var(--mint);
   font: 700 clamp(42px, 5vw, 64px)/.96 Barlow, Impact, sans-serif;
   text-transform: uppercase;
 }
@@ -356,6 +358,7 @@ footer a { white-space: nowrap; }
 .pack-card h3 {
   min-height: 2.1em;
   margin: 0 0 10px;
+  color: var(--mint);
   font: 700 27px/1.04 Barlow, Impact, sans-serif;
 }
 
@@ -388,7 +391,7 @@ footer a { white-space: nowrap; }
   .signup { grid-template-columns: 1fr; gap: 24px; }
 }
 
-.publication-header, .publication-footer { font-family: system-ui, sans-serif; color: #e2ecec; }
+.publication-header, .publication-footer { font-family: system-ui, sans-serif; }
 .publication-header { display: block; width: 100%; max-width: none; padding: 0; border-bottom: 1px solid #263d3e; }
 .masthead { display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: center; min-height: 72px; padding-inline: clamp(16px, 3vw, 36px); border-bottom: 1px solid #263d3e; }
 .masthead a, .publication-nav a { text-decoration: none; }
@@ -401,7 +404,12 @@ footer a { white-space: nowrap; }
 .publication-nav a:hover { color: var(--mint); }
 .publication-nav a[aria-current] { border-bottom-color: currentColor; font-weight: 760; }
 .project-intro { display: flex; align-items: baseline; justify-content: space-between; gap: 6px 18px; margin-bottom: 14px; flex-wrap: wrap; }
-.project-name { font: 700 24px/1 Barlow, Impact, sans-serif; text-transform: uppercase; letter-spacing: .075em; }
+.project-name {
+  color: var(--mint);
+  font: 700 24px/1 Barlow, Impact, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .075em;
+}
 .project-intro .strapline { margin: 0; }
 .publication-footer { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; font-size: 13px; gap: 16px 26px; }
 .footer-name { font-weight: 760; text-decoration: none; }
