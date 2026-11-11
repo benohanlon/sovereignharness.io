@@ -38,6 +38,7 @@ main, footer {
 .strapline {
   margin: 9px 0 0;
   font-size: clamp(11px, 1.1vw, 13px);
+  font-style: italic;
   line-height: 1.6;
 }
 
