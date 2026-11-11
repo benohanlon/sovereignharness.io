@@ -1,3 +1,5 @@
+[![Sovereign Harness website — a mint and teal eye reflecting a wider world](assets/eye.jpg)](https://sovereignharness.io/)
+
 # sovereignharness.io
 
 **[Visit the live website ↗](https://sovereignharness.io/)**
