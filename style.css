@@ -210,7 +210,7 @@ h1 { font-size: clamp(49px, 6.2vw, 94px); }
 
 .signup-guide {
   display: block;
-  width: 100%;
+  width: min(100%, 340px);
   height: auto;
   margin-top: 12px;
   border-radius: 6px;
