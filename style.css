@@ -98,6 +98,8 @@ nav {
 .hero { padding-top: clamp(18px, 3vw, 36px); }
 
 .eye-banner {
+  --pupil-x: 40.6%;
+  --pupil-y: 46.6%;
   position: relative;
   overflow: hidden;
   margin: 0;
@@ -109,19 +111,28 @@ nav {
   width: 100%;
   height: clamp(150px, 34vw, 384px);
   object-fit: cover;
-  object-position: 41.6% 50%;
+  object-position: var(--pupil-x) var(--pupil-y);
 }
 
 .eye-caption {
   position: absolute;
-  left: 41.6%;
-  top: 49%;
+  left: var(--pupil-x);
+  top: var(--pupil-y);
   transform: translate(-50%, -50%);
-  width: 30%;
+  width: max-content;
   text-align: center;
   text-transform: uppercase;
-  font: 700 clamp(12px, 2vw, 26px)/1.03 Barlow, Impact, sans-serif;
-  text-shadow: 0 2px 8px var(--dark);
+  font: 700 clamp(10px, 1.8vw, 24px)/1.04 Barlow, Impact, sans-serif;
+  color: #ff9958;
+  filter: drop-shadow(0 0 2px #f1743580) drop-shadow(1px 2px 6px #e0602d5c);
+}
+
+@supports (background-clip: text) {
+  .eye-caption {
+    background-image: linear-gradient(173deg, #ffbd85, #f88b4d 36%, #ffd19c 48%, #fa9754 57%, #ed773b);
+    background-clip: text;
+    color: transparent;
+  }
 }
 
 .hero-copy {
