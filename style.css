@@ -74,7 +74,7 @@ nav {
   white-space: nowrap;
 }
 
-.alpha-cta {
+.subscribe-cta {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
@@ -82,11 +82,15 @@ nav {
   border: 1px solid var(--orange);
   background: var(--orange);
   color: var(--dark);
+  font-size: 12px;
   font-weight: bold;
+  line-height: 1.5;
   text-decoration: none;
 }
 
-.alpha-cta:hover {
+.subscribe-cta:hover,
+.subscribe-cta:focus-visible,
+.subscribe-cta:active {
   border-color: var(--mint);
   background: var(--mint);
 }
@@ -203,20 +207,6 @@ h1 { font-size: clamp(49px, 6.2vw, 94px); }
 }
 
 .signup-reminder strong { color: var(--orange); }
-
-.button {
-  display: inline-block;
-  padding: 17px 22px;
-  background: var(--mint);
-  color: var(--dark);
-  text-decoration: none;
-  font-size: 12px;
-  font-weight: bold;
-  line-height: 1.5;
-  border: 1px solid var(--mint);
-}
-
-.button:hover { background: var(--orange); border-color: var(--orange); }
 
 footer {
   padding-block: 25px;
@@ -405,7 +395,7 @@ footer a { white-space: nowrap; }
 @media (max-width: 760px) {
   header { flex-direction: column; align-items: flex-start; gap: 12px; }
   nav { width: 100%; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 11px; }
-  .alpha-cta { padding-inline: 10px; }
+  .subscribe-cta { padding-inline: 10px; font-size: 11px; }
   .summary { font-size: 13px; }
   .benefits {
     flex-direction: column;
