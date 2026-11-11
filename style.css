@@ -209,28 +209,11 @@ h1 { font-size: clamp(49px, 6.2vw, 94px); }
 .signup-reminder strong { color: var(--orange); }
 
 .signup-guide {
-  margin-top: 12px;
-  font-size: 12px;
-  line-height: 1.6;
-}
-
-.signup-guide summary {
-  width: fit-content;
-  cursor: pointer;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-
-.signup-guide summary:focus-visible {
-  outline: 2px solid var(--orange);
-  outline-offset: 4px;
-}
-
-.signup-guide img {
   display: block;
   width: 100%;
   height: auto;
   margin-top: 12px;
+  border-radius: 6px;
 }
 
 footer {
