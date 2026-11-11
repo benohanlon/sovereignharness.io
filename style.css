@@ -206,6 +206,13 @@ h1 { font-size: clamp(49px, 6.2vw, 94px); }
   line-height: 1.8;
 }
 
+.signup-eye {
+  display: block;
+  width: clamp(54px, 6vw, 82px);
+  height: auto;
+  margin-top: 20px;
+}
+
 .signup-box {
   border: 1px solid var(--muted);
   padding: 24px;

@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#031c1d">
 <link rel="canonical" href="https://sovereignharness.io/">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="style.css?v=cc5874d">
+<link rel="stylesheet" href="style.css?v=41712ad">
 <meta property="og:title" content="Sovereign Harness — Own your intelligence">
 <meta property="og:description" content="A personal operating system in Hermes. Opt in to project updates and future alpha cohort invitations.">
 <meta property="og:type" content="website">
@@ -98,7 +98,11 @@
   </div>
 </section>
 <section class="signup" id="updates" aria-labelledby="signup-title">
-  <div><h2 id="signup-title">Join the alpha</h2><p>I’ll share Sovereign Harness updates and announce alpha invitations through my free Substack, <i>The Ecosystem Operator</i>.</p></div>
+  <div>
+    <h2 id="signup-title">Join the alpha</h2>
+    <p>I’ll share Sovereign Harness updates and announce alpha invitations through my free Substack, <i>The Ecosystem Operator</i>.</p>
+    <img class="signup-eye" src="icon.svg" data-animation="assets/eye-blink.gif?v=2ba48cd" width="192" height="192" alt="">
+  </div>
   <div class="signup-box">
     <a class="subscribe-cta" href="https://ecosystemoperator.substack.com/embed">SUBSCRIBE FREE ON SUBSTACK ↗</a>
     <p class="signup-reminder"><strong>Important</strong><br>After subscribing, open <a href="https://ecosystemoperator.substack.com/account#notifications">Substack notifications</a> and turn on the middle switch labelled <b>Sovereign Harness</b>.</p>
@@ -110,14 +114,15 @@
 <script src="profile-packs.js?v=69438b4" defer></script>
 <script src="favicon-blink.js?v=b08d738" defer></script>
 <script>
-  const signupGuide = document.querySelector('.signup-guide');
   if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.intersectionRatio < 0.75) return;
-      signupGuide.src = signupGuide.dataset.animation;
-      observer.disconnect();
+    const observer = new IntersectionObserver((entries) => {
+      for (const { target, intersectionRatio } of entries) {
+        if (intersectionRatio < 0.75) continue;
+        target.src = target.dataset.animation;
+        observer.unobserve(target);
+      }
     }, { threshold: 0.75 });
-    observer.observe(signupGuide);
+    document.querySelectorAll('#updates img[data-animation]').forEach(image => observer.observe(image));
   }
 </script>
 </body>
