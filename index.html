@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sovereign Harness — your AI, on your terms</title>
+<title>Sovereign Harness — Own your intelligence</title>
 <meta name="description" content="Bring your models, knowledge and ongoing work into a harness you control. Follow Sovereign Harness updates through The Ecosystem Operator.">
 <meta name="theme-color" content="#031c1d">
 <link rel="canonical" href="https://sovereignharness.io/">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="style.css">
-<meta property="og:title" content="Sovereign Harness — your AI, on your terms">
+<meta property="og:title" content="Sovereign Harness — Own your intelligence">
 <meta property="og:description" content="A personal operating system in Hermes. Opt in to project updates and future alpha cohort invitations.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://sovereignharness.io/">
@@ -20,40 +20,85 @@
 <meta property="og:image:height" content="887">
 <meta property="og:image:alt" content="A mint and teal eye reflecting a wider world, with tiny orange lights. No text.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Sovereign Harness — your AI, on your terms">
+<meta name="twitter:title" content="Sovereign Harness — Own your intelligence">
 <meta name="twitter:description" content="A personal operating system in Hermes. Opt in to project updates and future alpha cohort invitations.">
 <meta name="twitter:image" content="https://sovereignharness.io/assets/eye.jpg">
 <meta name="twitter:image:alt" content="A mint and teal eye reflecting a wider world, with tiny orange lights. No text.">
 </head>
 <body>
-<header><a class="wordmark" href="./" aria-label="Sovereign Harness home">SOVEREIGN HARNESS</a><nav aria-label="Main navigation"><a href="#about">The idea</a><a href="#updates">Get updates ↗</a></nav></header>
+<header>
+  <div class="brand">
+    <a class="wordmark" href="#top" aria-label="Sovereign Harness home">SOVEREIGN HARNESS</a>
+    <p class="strapline">“The only real test of intelligence is if you get what you want out of life.”</p>
+  </div>
+  <nav aria-label="Main navigation"><a href="#profile-packs">Profile packs</a><a href="#updates">Join the alpha</a></nav>
+</header>
 <main>
-<section class="hero" aria-labelledby="hero-title">
-<p class="eyebrow">Built in Hermes · Alpha in development</p>
-<div class="eye-banner">
-<img class="hero-image" src="assets/eye.jpg" alt="A mint and teal eye reflecting a wider world, with tiny orange lights." width="1774" height="887" fetchpriority="high">
-<h1 id="hero-title">There’s<br>something<br>in you that<br>the world<br>needs.</h1>
-</div>
-<div class="image-note"><span>HUMAN PURPOSE / EXTENDED CAPABILITIES</span><span>SOVEREIGNHARNESS.IO</span></div>
-<div class="intro"><p class="summary">Keep using the models and prompts that work for you. Bring your knowledge, scaffolding and ongoing work into a personal operating system you control.</p><a class="button" href="#updates">GET HARNESS UPDATES ↗</a></div>
-<div class="hero-quote" id="naval-quote">
-<blockquote class="twitter-tweet" data-theme="dark" data-dnt="true" data-lang="en">
-<p lang="en" dir="ltr">The only real test of intelligence is if you get what you want out of life.</p>
-&mdash; Naval (@naval) <a href="https://twitter.com/naval/status/1259593847580946432">May 10, 2020</a>
-</blockquote>
-</div>
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <figure class="eye-banner">
+    <img class="hero-image" src="assets/eye.jpg" alt="" width="1774" height="887" fetchpriority="high">
+    <figcaption class="eye-caption">There’s<br>something<br>in you that<br>the world<br>needs.</figcaption>
+  </figure>
+  <div class="hero-copy" id="about">
+    <h1 id="hero-title">Own your intelligence</h1>
+    <p class="summary">Sovereign Harness is a personal AI operating system and second brain that extends your capabilities and helps you act on your intent beyond the chat box. Keep using Claude, OpenAI models or Gemini. Try an open-weight model and switch back anytime. Keep your data, prompts and workflows in private sleeves you control, so you can change providers without rebuilding your setup. I’m building the shared harness for open-source release. Use it to direct a fleet of specialist agents to research, plan and carry work through.</p>
+    <ul class="benefits">
+      <li>Switch models without starting over</li>
+      <li>Extend your capabilities beyond the chat box</li>
+      <li>Keep your edge with private sleeves</li>
+    </ul>
+  </div>
 </section>
-<section class="principles" id="about" aria-label="The idea">
-<article class="principle"><span>01 / CHOICE</span><b>USE THE MODELS THAT SERVE YOU</b><p>Work with different models alongside one another, choosing what suits the task.</p></article>
-<article class="principle"><span>02 / CONTINUITY</span><b>BUILD ON WHAT YOU’VE ALREADY BUILT</b><p>Connect your roles, knowledge and projects so useful work can inform what comes next.</p></article>
-<article class="principle"><span>03 / AGENCY</span><b>KEEP YOUR FREEDOM OF ACTION</b><p>Keep your harness and working context under your control as providers, prices and policies change.</p></article>
+<section class="profile-packs" id="profile-packs" aria-labelledby="packs-title">
+  <div class="packs-heading">
+    <div>
+      <h2 id="packs-title">Profile packs</h2>
+      <p class="summary">Choose roles for your agent team. Each pack pairs a public OODA role profile with a private sovereign sleeve for your goals, knowledge and ways of working. You control what goes in your sleeve and what you share.</p>
+    </div>
+    <div class="pack-controls" role="group" aria-label="Browse profile packs" hidden>
+      <button type="button" data-pack-direction="-1" aria-controls="pack-track" aria-label="Previous profile pack">←</button>
+      <button type="button" data-pack-direction="1" aria-controls="pack-track" aria-label="Next profile pack">→</button>
+    </div>
+  </div>
+  <ul class="pack-track" id="pack-track" tabindex="0" aria-label="Five profile packs">
+    <li class="pack-card">
+      <h3>Maximise your freedom of action</h3>
+      <img src="assets/chief-of-staff-baldwin.png" alt="" width="1536" height="1024" loading="lazy">
+      <p class="pack-character"><strong>Baldwin</strong> · Chief of Staff</p>
+      <p>Baldwin is your interface to the agentic team you assemble from the profile packs. He helps you build situational awareness across the team’s work and handles fleet management for its subagents. He helps you develop theory of mind so you can operate within other people’s decision cycles (OODA loops). He uses metacognition to examine how the team reached its conclusions and adjust its approach as people respond. The decisions that need your judgement come back to you.</p>
+    </li>
+    <li class="pack-card">
+      <h3>Winners put up the numbers</h3>
+      <img src="assets/head-of-business-development-blake.png" alt="" width="1536" height="1024" loading="lazy">
+      <p class="pack-character"><strong>Blake</strong> · Head of Business Development</p>
+      <p>Win more client work. Find qualified leads, shape offers and track what turns outreach into conversations and paid engagements.</p>
+    </li>
+    <li class="pack-card">
+      <h3>Work the hidden job market</h3>
+      <img src="assets/head-of-talent-harry.png" alt="" width="1536" height="1024" loading="lazy">
+      <p class="pack-character"><strong>Harry Da Souza</strong> · Candidate-Side Executive Search Consultant</p>
+      <p>Advance your career by finding senior opportunities before they’re advertised and getting in front of the people shaping them.</p>
+    </li>
+    <li class="pack-card">
+      <h3>See the decision from their side</h3>
+      <img src="assets/research-lead-bateson.png" alt="" width="1536" height="1024" loading="lazy">
+      <p class="pack-character"><strong>Bateson</strong> · Research Lead</p>
+      <p>Understand what others can see, what matters to them and what might change their mind. Use that insight to choose when and how to engage.</p>
+    </li>
+    <li class="pack-card">
+      <h3>Make your harness work as one system</h3>
+      <img src="assets/head-of-harness-engineering-odysseus.png" alt="" width="1536" height="1024" loading="lazy">
+      <p class="pack-character"><strong>Odysseus</strong> · Head of Harness Engineering</p>
+      <p>Make your agents, tools and workflows fit together. Fix recurring friction and add capabilities you can rely on as your work changes.</p>
+    </li>
+  </ul>
 </section>
 <section class="signup" id="updates" aria-labelledby="signup-title">
-<div><p class="eyebrow">Follow the build</p><h2 id="signup-title">Help shape<br>the alpha.</h2><p>I’m developing Sovereign Harness and planning an alpha cohort. Choose the <i>Sovereign Harness</i> newsletter within <i>The Ecosystem Operator</i> for project updates, practical experiments and future cohort invitations.</p><p class="fine">The project is in development. Signing up gets you updates; it doesn’t reserve a cohort place.</p></div>
-<div class="signup-box"><p class="eyebrow">A dedicated stream / The Ecosystem Operator</p><p>Already a subscriber? Open your email preferences and switch on <b>Sovereign Harness</b>.</p><a class="button" href="https://ecosystemoperator.substack.com/account#notifications">OPT IN TO HARNESS UPDATES ↗</a><p>New here? <a href="https://ecosystemoperator.substack.com/embed">Subscribe to The Ecosystem Operator first</a>, then open your email preferences and choose Sovereign Harness.</p><p class="fine">Only people who choose this stream receive its updates. You control your publication and Section email preferences on Substack.</p><a class="publication-link" href="https://ecosystemoperator.substack.com/s/sovereign-harness">Read Sovereign Harness updates →</a></div>
+  <div><h2 id="signup-title">Join the alpha</h2><p>I’ll invite people when the alpha is ready. Sign up for my free Substack, <i>The Ecosystem Operator</i>, and turn on <b>Sovereign Harness</b> for updates and news about invitations.</p></div>
+  <div class="signup-box"><a class="button" href="https://ecosystemoperator.substack.com/embed">SUBSCRIBE FREE ON SUBSTACK ↗</a><p>Already subscribed? <a href="https://ecosystemoperator.substack.com/account#notifications">Turn on Sovereign Harness updates</a> in your email preferences.</p></div>
 </section>
 </main>
 <footer><span>© Ben O’Hanlon · Sovereign Harness</span><span class="origin">Built on <a href="https://hermes-agent.nousresearch.com/">Hermes</a> · <a href="https://linktr.ee/benohanlon">Find Ben ↗</a></span></footer>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script src="profile-packs.js" defer></script>
 </body>
 </html>
