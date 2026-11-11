@@ -46,18 +46,21 @@ header {
 .wordmark {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   font: 700 clamp(24px, 3vw, 34px)/1 Barlow, Impact, sans-serif;
   letter-spacing: .08em;
   text-decoration: none;
 }
 
-.wordmark::before {
-  content: '';
+.wordmark-icon {
   flex: none;
-  background: var(--orange);
-  width: 5px;
-  height: .75em;
+  width: clamp(26px, 3vw, 34px);
+}
+
+.wordmark-icon img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .strapline {
