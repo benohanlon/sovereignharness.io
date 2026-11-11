@@ -1,39 +1,126 @@
 const track = document.querySelector("#pack-track");
 const controls = document.querySelector(".pack-controls");
+const dial = controls.querySelector(".pack-dial");
+const cards = [...track.children];
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
+const anglePerCard = 180 / cards.length;
+const pixelsPerDialStep = 34;
+let position = 0;
+let target = 0;
+let radius;
+let animation;
+let cardDrag;
+let dialDrag;
+let dialOffset = 0;
 
-function updateControls() {
-  controls.hidden = track.scrollWidth - track.clientWidth <= 1;
-}
-
-function movePacks(direction) {
-  const end = track.scrollWidth - track.clientWidth;
-  if (end <= 1) return;
-
-  const current = track.scrollLeft;
-  const [first, second] = track.children;
-  const step = second.getBoundingClientRect().left - first.getBoundingClientRect().left;
-  let destination = current + step * direction;
-
-  if (direction < 0 && current <= 1) destination = end;
-  if (direction > 0 && current >= end - 1) destination = 0;
-
-  const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  track.scrollTo({ left: destination, behavior: reduceMotion ? "instant" : "smooth" });
-}
-
-for (const button of controls.querySelectorAll("button")) {
-  button.addEventListener("click", () => {
-    movePacks(Number(button.dataset.packDirection));
+// Recycle faces when they turn edge-on, behind either end of the visible arc.
+function drawWheel() {
+  const half = cards.length / 2;
+  cards.forEach((card, index) => {
+    const offset = ((index - position + half) % cards.length + cards.length) % cards.length - half;
+    const angle = offset * anglePerCard;
+    card.style.setProperty("--card-angle", `${angle}deg`);
+    card.style.setProperty("--card-light", 1 - Math.abs(angle) / 240);
+    card.style.zIndex = String(Math.round(90 - Math.abs(angle)));
   });
 }
 
-track.addEventListener("keydown", event => {
-  if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
-  if (controls.hidden) return;
+function resizeWheel() {
+  const pitch = cards[0].offsetWidth + 20;
+  radius = pitch / (2 * Math.tan(anglePerCard * Math.PI / 360));
+  track.style.setProperty("--wheel-radius", `${radius}px`);
+}
 
+function turnTo(destination) {
+  cancelAnimationFrame(animation);
+  target = destination;
+  if (reduceMotion.matches || position === target) {
+    position = target;
+    drawWheel();
+    return;
+  }
+
+  const start = position;
+  const startedAt = performance.now();
+  function frame(now) {
+    const progress = Math.min(1, (now - startedAt) / 320);
+    position = start + (destination - start) * (1 - (1 - progress) ** 3);
+    drawWheel();
+    if (progress < 1) animation = requestAnimationFrame(frame);
+  }
+  animation = requestAnimationFrame(frame);
+}
+
+function step(direction) {
+  turnTo(Math.round(target) + direction);
+}
+
+for (const button of controls.querySelectorAll("[data-pack-direction]")) {
+  button.addEventListener("click", () => step(Number(button.dataset.packDirection)));
+}
+
+function handleArrowKey(event) {
+  if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
   event.preventDefault();
-  movePacks(event.key === "ArrowLeft" ? -1 : 1);
+  step(event.key === "ArrowLeft" ? -1 : 1);
+}
+
+dial.addEventListener("pointerdown", event => {
+  if (!event.isPrimary || event.button !== 0) return;
+  cancelAnimationFrame(animation);
+  dialDrag = { startX: event.clientX, startPosition: position, startOffset: dialOffset, moved: false };
+  dial.setPointerCapture(event.pointerId);
 });
 
-new ResizeObserver(updateControls).observe(track);
-updateControls();
+dial.addEventListener("pointermove", event => {
+  if (!dialDrag || !dial.hasPointerCapture(event.pointerId)) return;
+  const distance = event.clientX - dialDrag.startX;
+  if (Math.abs(distance) < 4 && !dialDrag.moved) return;
+  dialDrag.moved = true;
+  position = dialDrag.startPosition + distance / pixelsPerDialStep;
+  dialOffset = (dialDrag.startOffset + distance) % 5;
+  dial.style.setProperty("--dial-offset", `${dialOffset}px`);
+  drawWheel();
+});
+
+dial.addEventListener("lostpointercapture", () => {
+  turnTo(Math.round(position));
+});
+
+dial.addEventListener("click", event => {
+  if (event.detail === 0 || !dialDrag?.moved) step(1);
+});
+dial.addEventListener("keydown", handleArrowKey);
+
+track.addEventListener("pointerdown", event => {
+  if (!event.isPrimary || event.button !== 0 || event.target.closest("a, button, input")) return;
+  cancelAnimationFrame(animation);
+  cardDrag = { startX: event.clientX, startPosition: position };
+  track.setPointerCapture(event.pointerId);
+});
+
+track.addEventListener("dragstart", event => event.preventDefault());
+
+track.addEventListener("pointermove", event => {
+  if (!cardDrag || !track.hasPointerCapture(event.pointerId)) return;
+  const distance = cardDrag.startX - event.clientX;
+  if (Math.abs(distance) < 5 && !track.classList.contains("is-dragging")) return;
+  track.classList.add("is-dragging");
+  const pixelsPerCard = radius * anglePerCard * Math.PI / 180;
+  position = cardDrag.startPosition + distance / pixelsPerCard;
+  drawWheel();
+});
+
+track.addEventListener("lostpointercapture", () => {
+  cardDrag = undefined;
+  track.classList.remove("is-dragging");
+  turnTo(Math.round(position));
+});
+
+track.addEventListener("keydown", handleArrowKey);
+
+track.classList.add("is-wheel");
+resizeWheel();
+drawWheel();
+controls.hidden = false;
+new ResizeObserver(resizeWheel).observe(cards[0]);
