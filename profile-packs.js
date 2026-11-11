@@ -3,8 +3,9 @@ const controls = document.querySelector(".pack-controls");
 const dial = controls.querySelector(".pack-dial");
 const cards = [...track.children];
 const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
-const anglePerCard = 180 / cards.length;
+const wideWheel = matchMedia("(min-width: 1100px)");
 const pixelsPerDialStep = 34;
+let anglePerCard;
 let position = 0;
 let target = 0;
 let radius;
@@ -13,7 +14,7 @@ let cardDrag;
 let dialDrag;
 let dialOffset = 0;
 
-// Recycle faces when they turn edge-on, behind either end of the visible arc.
+// Recycle faces at the far edges of the visible arc.
 function drawWheel() {
   const half = cards.length / 2;
   cards.forEach((card, index) => {
@@ -26,9 +27,12 @@ function drawWheel() {
 }
 
 function resizeWheel() {
+  const visibleArc = wideWheel.matches ? 135 : 180;
+  anglePerCard = visibleArc / cards.length;
   const pitch = cards[0].offsetWidth + 20;
   radius = pitch / (2 * Math.tan(anglePerCard * Math.PI / 360));
   track.style.setProperty("--wheel-radius", `${radius}px`);
+  drawWheel();
 }
 
 function turnTo(destination) {
@@ -121,6 +125,5 @@ track.addEventListener("keydown", handleArrowKey);
 
 track.classList.add("is-wheel");
 resizeWheel();
-drawWheel();
 controls.hidden = false;
-new ResizeObserver(resizeWheel).observe(cards[0]);
+new ResizeObserver(resizeWheel).observe(track);
