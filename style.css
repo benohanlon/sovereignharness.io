@@ -124,6 +124,7 @@ h1, h2 {
 }
 
 h1 { font-size: clamp(49px, 6.2vw, 94px); }
+#hero-title { text-transform: none; }
 
 .summary {
   max-width: 760px;
