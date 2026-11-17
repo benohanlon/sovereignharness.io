@@ -27,7 +27,7 @@
 <meta name="robots" content="noindex">
 <style>
   .closing-artwork {
-    --darkness: #020403;
+    --darkness: #010909; /* Petrol dark mixed with black. */
     --descent: clamp(10rem, 27svh, 19rem);
     margin: 0;
     padding: var(--descent) 0 clamp(6rem, 18svh, 10rem);
@@ -36,6 +36,7 @@
   }
   .closing-portrait {
     position: relative;
+    isolation: isolate;
     width: min(100%, 38rem);
     margin-inline: auto;
     opacity: var(--reveal, 1);
@@ -44,13 +45,23 @@
     display: block;
     width: 100%;
     height: auto;
-    filter: grayscale(.8) sepia(.32) hue-rotate(43deg) saturate(1.15);
+    filter: grayscale(1) contrast(1.06);
   }
+  .closing-portrait::before,
   .closing-portrait::after {
     content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
+  }
+  .closing-portrait::before {
+    z-index: 1;
+    background: var(--mint);
+    background: color-mix(in srgb, var(--mint) 86%, var(--muted));
+    mix-blend-mode: multiply;
+  }
+  .closing-portrait::after {
+    z-index: 2;
     background:
       linear-gradient(to bottom, var(--darkness), transparent 13%, transparent 91%, var(--darkness)),
       linear-gradient(to right, var(--darkness), transparent 9%, transparent 91%, var(--darkness));
