@@ -11,6 +11,12 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: UnifrakturMaguntia;
+  src: url('assets/UnifrakturMaguntia-Book.ttf') format('truetype');
+  font-display: swap;
+}
+
 :root {
   color-scheme: dark;
   --dark: #031c1d;
@@ -209,6 +215,61 @@ footer {
 }
 
 footer a { white-space: nowrap; }
+
+.closing-artwork {
+  --shadow-room: #0b1217;
+  --descent: clamp(1.5rem, 4svh, 3rem);
+  padding: var(--descent) 0 2rem;
+  scroll-margin-top: 26svh;
+  background: linear-gradient(to bottom, var(--dark), var(--shadow-room) var(--descent));
+}
+
+.closing-portrait {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 42rem);
+  margin: 0 auto;
+  mask-image: linear-gradient(to bottom, transparent, rgb(0 0 0 / .2) 4%, black 15%, black 96%, transparent);
+}
+
+.closing-portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: grayscale(.28);
+}
+
+.closing-portrait::before,
+.closing-portrait::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.closing-portrait::before {
+  z-index: 1;
+  background: var(--dark);
+  mix-blend-mode: screen;
+  opacity: .20;
+}
+
+.closing-portrait::after {
+  z-index: 2;
+  background: linear-gradient(to right, var(--shadow-room), transparent 5%, transparent 95%, var(--shadow-room));
+}
+
+.closing-caption {
+  position: absolute;
+  z-index: 3;
+  inset: 62% .5rem auto;
+  margin: 0;
+  text-align: center;
+  color: #e6f2ed;
+  font: 400 clamp(1.5rem, 6.9vw, 3.1rem)/1.1 UnifrakturMaguntia, Georgia, serif;
+  text-shadow: 0 1px 4px rgb(0 0 0 / .9), 0 0 18px rgb(0 0 0 / .6);
+  text-wrap: balance;
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
