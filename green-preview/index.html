@@ -27,22 +27,36 @@
 <meta name="robots" content="noindex">
 <style>
   .closing-artwork {
+    --darkness: #020403;
+    --descent: clamp(10rem, 27svh, 19rem);
     margin: 0;
-    padding: clamp(3rem, 8vw, 7rem) 1rem clamp(2rem, 5vw, 4rem);
-    background: #080e0b;
-    text-align: center;
+    padding: var(--descent) 0 clamp(6rem, 18svh, 10rem);
+    scroll-margin-top: 34svh;
+    background: linear-gradient(to bottom, var(--dark) 0, var(--darkness) var(--descent));
   }
-  .closing-artwork img {
-    display: block;
-    width: min(100%, 34rem);
-    height: auto;
+  .closing-portrait {
+    position: relative;
+    width: min(100%, 38rem);
     margin-inline: auto;
-    filter: grayscale(.82) sepia(.35) hue-rotate(43deg) saturate(1.18);
+    opacity: var(--reveal, 1);
   }
-  .closing-artwork figcaption {
-    margin-top: 1rem;
-    color: #a8b5a6;
-    font-size: .8rem;
+  .closing-portrait img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: grayscale(.8) sepia(.32) hue-rotate(43deg) saturate(1.15);
+  }
+  .closing-portrait::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(to bottom, var(--darkness), transparent 13%, transparent 91%, var(--darkness)),
+      linear-gradient(to right, var(--darkness), transparent 9%, transparent 91%, var(--darkness));
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .closing-portrait { opacity: 1; }
   }
 </style>
 </head>
@@ -141,9 +155,10 @@
   <span class="footer-credit">Built on <a href="https://hermes-agent.nousresearch.com/">Hermes</a></span>
 </footer>
 <figure class="closing-artwork" id="closing-artwork">
-  <img src="the-war-is-spiritual.webp" width="1440" height="1800"
-       loading="lazy" alt="A stone angel holds a rifle. The caption reads 'The war is spiritual'.">
-  <figcaption><a href="https://www.instagram.com/p/DWGxwhJDHxY/">Source · Praetorian Operations Group</a></figcaption>
+  <div class="closing-portrait">
+    <img src="the-war-is-spiritual-keyboard.webp" width="1122" height="1402"
+         loading="lazy" alt="A stone angel carries a rugged computer keyboard across its chest. The caption reads ‘The war is spiritual’.">
+  </div>
 </figure>
 <script src="../profile-packs.js?v=69438b4" defer></script>
 <script src="../favicon-blink.js?v=b08d738" defer></script>
@@ -157,6 +172,33 @@
     }, { threshold: 0.75 });
     observer.observe(signupGuide);
   }
+</script>
+<script>
+  const portrait = document.querySelector('.closing-portrait');
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  let revealFrame = 0;
+
+  function updatePortrait() {
+    revealFrame = 0;
+    if (reducedMotion.matches) {
+      portrait.style.removeProperty('--reveal');
+      return;
+    }
+
+    const top = portrait.getBoundingClientRect().top / window.innerHeight;
+    const progress = Math.max(0, Math.min(1, (0.94 - top) / 0.51));
+    portrait.style.setProperty('--reveal', progress * progress * (3 - 2 * progress));
+  }
+
+  function schedulePortraitUpdate() {
+    if (!revealFrame) revealFrame = requestAnimationFrame(updatePortrait);
+  }
+
+  updatePortrait();
+  window.addEventListener('scroll', schedulePortraitUpdate, { passive: true });
+  window.addEventListener('resize', schedulePortraitUpdate, { passive: true });
+  window.addEventListener('pageshow', schedulePortraitUpdate);
+  reducedMotion.addEventListener('change', schedulePortraitUpdate);
 </script>
 </body>
 </html>
