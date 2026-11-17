@@ -217,11 +217,10 @@ footer {
 footer a { white-space: nowrap; }
 
 .closing-artwork {
-  --shadow-room: #0b1217;
-  --descent: clamp(1.5rem, 4svh, 3rem);
-  padding: var(--descent) 0 2rem;
+  --shadow-room: #021819;
+  padding-bottom: 2rem;
   scroll-margin-top: 26svh;
-  background: linear-gradient(to bottom, var(--dark), var(--shadow-room) var(--descent));
+  background: var(--shadow-room);
 }
 
 .closing-portrait {
@@ -229,34 +228,40 @@ footer a { white-space: nowrap; }
   isolation: isolate;
   width: min(100%, 42rem);
   margin: 0 auto;
-  mask-image: linear-gradient(to bottom, transparent, rgb(0 0 0 / .2) 4%, black 15%, black 96%, transparent);
+  mask-image: linear-gradient(black 97%, transparent);
 }
 
 .closing-portrait img {
   display: block;
   width: 100%;
   height: auto;
-  filter: grayscale(.28);
-}
-
-.closing-portrait::before,
-.closing-portrait::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
 }
 
 .closing-portrait::before {
+  content: "";
+  position: absolute;
   z-index: 1;
-  background: var(--dark);
-  mix-blend-mode: screen;
-  opacity: .20;
+  inset: 0 0 auto;
+  height: 100px;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 110% 132% at 0 0, var(--dark), transparent 72%),
+    linear-gradient(var(--dark), transparent 20px);
 }
 
-.closing-portrait::after {
-  z-index: 2;
-  background: linear-gradient(to right, var(--shadow-room), transparent 5%, transparent 95%, var(--shadow-room));
+@media (min-width: 43rem) {
+  .closing-artwork {
+    background: linear-gradient(var(--dark), var(--shadow-room) 100px);
+  }
+  .closing-portrait::after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(to right, var(--shadow-room), transparent 6%, transparent 94%, var(--shadow-room));
+    mask-image: linear-gradient(transparent, black 140px);
+  }
 }
 
 .closing-caption {
