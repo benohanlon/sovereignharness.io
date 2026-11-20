@@ -13,3 +13,7 @@ Edit index.html and style.css, review desktop/mobile layouts and links, then com
 The local fonts are unmodified OFL fonts; their licences are bundled in assets. The eye artwork is an AI-generated project asset. Its inclusion here does not publish the private harness or confer official Nous Research / Hermes branding.
 
 Open Graph and large-image social-card metadata point to assets/eye.jpg, the clean, text-free 1774 × 887 eye requested for WhatsApp and Signal sharing. The earlier typographic banner and its editable SVG remain as previous artwork, not the active link preview. Individual services may cache their previews. The responsive page hero remains accessible HTML text over the clean eye artwork.
+
+## Licence
+
+See [LICENSE](LICENSE) for the files covered by MIT and the scope of the grant.
