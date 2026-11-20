@@ -1,7 +1,36 @@
 (() => {
   const config = document.currentScript.dataset;
   const allowedHosts = new Set(['benohanlon.md', 'sovereignharness.io']);
-  if (!allowedHosts.has(location.hostname) || navigator.globalPrivacyControl || navigator.doNotTrack === '1') return;
+  if (!allowedHosts.has(location.hostname)) return;
+
+  const preferenceKey = 'site-analytics-disabled';
+  const browserOptOut = navigator.globalPrivacyControl || navigator.doNotTrack === '1';
+  let optedOut = false;
+  try {
+    optedOut = localStorage.getItem(preferenceKey) === '1';
+  } catch {
+    // Some browsers block storage even for site preferences.
+  }
+
+  const preference = document.querySelector('#analytics-opt-out');
+  if (preference) {
+    const status = document.querySelector('#analytics-preference-status');
+    preference.checked = Boolean(browserOptOut || optedOut);
+    preference.disabled = Boolean(browserOptOut);
+    status.textContent = browserOptOut ? 'Your browser has requested that analytics stay off.' : '';
+    preference.addEventListener('change', () => {
+      try {
+        if (preference.checked) localStorage.setItem(preferenceKey, '1');
+        else localStorage.removeItem(preferenceKey);
+        status.textContent = preference.checked ? 'Analytics are off in this browser.' : 'Analytics are on in this browser.';
+      } catch {
+        preference.checked = optedOut;
+        status.textContent = 'This browser blocked saving your preference. You can use a browser privacy setting to block analytics.';
+      }
+    });
+    return;
+  }
+  if (browserOptOut || optedOut) return;
 
   // The random ID exists only for this page load.
   const distinctId = crypto.randomUUID();
@@ -13,6 +42,11 @@
 
   function capture(event) {
     if (!events.has(event)) return;
+    try {
+      if (localStorage.getItem(preferenceKey) === '1') return;
+    } catch {
+      // The browser may block local storage.
+    }
     void fetch(new URL('/i/v0/e/', config.host), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
