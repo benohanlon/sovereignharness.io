@@ -505,7 +505,12 @@ footer a { white-space: nowrap; }
   justify-content: space-between;
   gap: .3rem 1.5rem;
   padding: 1rem clamp(1rem, 5vw, 5rem);
-  background: #f4c77e;
+  background-color: #efbd74;
+  background-image:
+    radial-gradient(ellipse at 69% 0%, rgb(255 250 220 / .7), transparent 36%),
+    linear-gradient(113deg, transparent 48%, rgb(255 252 231 / .55) 51%, transparent 55%),
+    linear-gradient(176deg, #e7ae60 0%, #f5ce91 44%, #e9b671 56%, #dcaa65 100%);
+  box-shadow: inset 0 1px rgb(255 250 225 / .8), inset 0 -1px rgb(76 48 18 / .4);
   color: var(--dark);
   text-decoration: none;
 }
