@@ -1,3 +1,7 @@
+/*
+ * SPDX-FileCopyrightText: 2026 Ben O’Hanlon
+ * SPDX-License-Identifier: MIT
+ */
 const track = document.querySelector("#pack-track");
 const controls = document.querySelector(".pack-controls");
 const dial = controls.querySelector(".pack-dial");

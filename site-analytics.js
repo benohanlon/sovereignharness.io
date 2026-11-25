@@ -1,3 +1,7 @@
+/*
+ * SPDX-FileCopyrightText: 2026 Ben O’Hanlon
+ * SPDX-License-Identifier: MIT
+ */
 (() => {
   const config = document.currentScript.dataset;
   const allowedHosts = new Set(['benohanlon.md', 'sovereignharness.io']);
