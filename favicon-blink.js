@@ -1,3 +1,7 @@
+/*
+ * SPDX-FileCopyrightText: 2026 Ben O’Hanlon
+ * SPDX-License-Identifier: MIT
+ */
 (() => {
   const icon = document.querySelector('link[rel="icon"]');
   const openEye = icon.href;
