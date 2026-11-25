@@ -497,3 +497,18 @@ footer a { white-space: nowrap; }
   .publication-footer { grid-template-columns: 1fr auto; }
   .footer-credit { grid-column: 1 / -1; justify-self: start; }
 }
+
+.explore-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .3rem 1.5rem;
+  padding: 1rem clamp(1rem, 5vw, 5rem);
+  background: #f4c77e;
+  color: var(--dark);
+  text-decoration: none;
+}
+.explore-banner strong { font: 700 clamp(1.35rem, 3vw, 1.8rem)/1.15 Barlow, sans-serif; }
+.explore-banner:hover strong, .explore-banner:focus-visible strong { text-decoration: underline; }
+.explore-banner:focus-visible { outline: 3px solid var(--dark); outline-offset: -5px; }
