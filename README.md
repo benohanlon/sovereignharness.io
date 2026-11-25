@@ -4,7 +4,7 @@
 
 **[Visit the live website ↗](https://sovereignharness.io/)**
 
-Small public landing page for Sovereign Harness, hosted by GitHub Pages from the main branch root. This website repository is separate from the private OODA and personal harness sources.
+Small public landing page for Sovereign Harness, hosted by GitHub Pages from the main branch root. The [OODA Harness](https://github.com/benohanlon/ooda-harness) is the public, reusable foundation. To set up your own Sovereign Harness, copy the [private harness home template](https://github.com/benohanlon/ooda-harness/blob/main/docs/private-harness-template.md) into a private repository you control, then add your context, chosen roles and working memory.
 
 The signup button opens Substack’s publication signup form. The reminder links directly to Substack email preferences, where new and existing readers can turn on Sovereign Harness updates. Both automatic section enrolment options were disabled at creation: no existing list copied and no automatic addition of general-publication subscribers. Publication membership and Section email preferences are managed on Substack. The website does not store email addresses or operate its own mailing service. Signing up is not a confirmed alpha-cohort place.
 
